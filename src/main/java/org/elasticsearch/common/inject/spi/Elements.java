@@ -21,6 +21,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.elasticsearch.bootstrap.Bootstrap;
 import org.elasticsearch.common.inject.*;
+import org.elasticsearch.common.inject.Module;
 import org.elasticsearch.common.inject.binder.AnnotatedBindingBuilder;
 import org.elasticsearch.common.inject.binder.AnnotatedConstantBindingBuilder;
 import org.elasticsearch.common.inject.binder.AnnotatedElementBuilder;

@@ -774,7 +774,7 @@ public class InternalEngine extends Engine {
             return;
         }
         possibleMergeNeeded = false;
-        try (ReleasableLock _ = readLock.acquire()) {
+        try (ReleasableLock __ = readLock.acquire()) {
             indexWriter.maybeMerge();
         } catch (Throwable t) {
             maybeFailEngine("maybe_merge", t);

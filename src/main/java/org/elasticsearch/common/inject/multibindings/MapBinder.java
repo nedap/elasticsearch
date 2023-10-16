@@ -18,6 +18,7 @@ package org.elasticsearch.common.inject.multibindings;
 
 import com.google.common.collect.ImmutableSet;
 import org.elasticsearch.common.inject.*;
+import org.elasticsearch.common.inject.Module;
 import org.elasticsearch.common.inject.binder.LinkedBindingBuilder;
 import org.elasticsearch.common.inject.multibindings.Multibinder.RealMultibinder;
 import org.elasticsearch.common.inject.spi.Dependency;

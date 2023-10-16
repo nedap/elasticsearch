@@ -74,7 +74,19 @@ public class JvmInfo implements Streamable, Serializable, ToXContent {
             // ignore
         }
         info.inputArguments = runtimeMXBean.getInputArguments().toArray(new String[runtimeMXBean.getInputArguments().size()]);
-        info.bootClassPath = runtimeMXBean.getBootClassPath();
+//        info.bootClassPath = runtimeMXBean.getBootClassPath();
+        String bootClassPath;
+        try {
+            bootClassPath = runtimeMXBean.getBootClassPath();
+        } catch (UnsupportedOperationException e) {
+            // oracle java 9
+            bootClassPath = System.getProperty("sun.boot.class.path");
+            if (bootClassPath == null) {
+                // something else
+                bootClassPath = "<unknown>";
+            }
+        }
+        info.bootClassPath = bootClassPath;
         info.classPath = runtimeMXBean.getClassPath();
         info.systemProperties = runtimeMXBean.getSystemProperties();
 

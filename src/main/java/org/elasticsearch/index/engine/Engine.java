@@ -1069,7 +1069,7 @@ public abstract class Engine implements Closeable {
     public void flushAndClose() throws IOException {
         if (isClosed.get() == false) {
             logger.trace("flushAndClose now acquire writeLock");
-            try (ReleasableLock _ = writeLock.acquire()) {
+            try (ReleasableLock __ = writeLock.acquire()) {
                 logger.trace("flushAndClose now acquired writeLock");
                 try {
                     logger.debug("flushing shard on close - this might take some time to sync files to disk");
@@ -1092,7 +1092,7 @@ public abstract class Engine implements Closeable {
         // don't acquire the write lock if we are already closed
         if (isClosed.get() == false) {
             logger.debug("close now acquiring writeLock");
-            try (ReleasableLock _ = writeLock.acquire()) {
+            try (ReleasableLock __ = writeLock.acquire()) {
                 logger.debug("close acquired writeLock");
                 closeNoLock("api");
             }

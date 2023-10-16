@@ -338,7 +338,7 @@ public abstract class Aggregator extends BucketCollector implements Releasable {
     /** Called upon release of the aggregator. */
     @Override
     public void close() {
-        try (Releasable _ = recordingWrapper) {
+        try (Releasable __ = recordingWrapper) {
             doClose();
         }
     }

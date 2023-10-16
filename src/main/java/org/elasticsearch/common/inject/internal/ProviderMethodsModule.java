@@ -19,6 +19,7 @@ package org.elasticsearch.common.inject.internal;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import org.elasticsearch.common.inject.*;
+import org.elasticsearch.common.inject.Module;
 import org.elasticsearch.common.inject.spi.Dependency;
 import org.elasticsearch.common.inject.spi.Message;
 import org.elasticsearch.common.inject.util.Modules;

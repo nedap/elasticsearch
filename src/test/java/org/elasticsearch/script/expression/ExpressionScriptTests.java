@@ -65,7 +65,7 @@ public class ExpressionScriptTests extends ElasticsearchIntegrationTest {
         client().prepareIndex("test", "doc", "1").setSource("foo", 4).setRefresh(true).get();
         SearchResponse rsp = buildRequest("doc['foo'].value + 1").get();
         assertEquals(1, rsp.getHits().getTotalHits());
-        assertEquals(5.0, rsp.getHits().getAt(0).field("foo").getValue());
+        assertEquals(5.0, (double)rsp.getHits().getAt(0).field("foo").getValue());
     }
 
     public void testScore() throws Exception {
@@ -97,8 +97,8 @@ public class ExpressionScriptTests extends ElasticsearchIntegrationTest {
         ElasticsearchAssertions.assertSearchResponse(rsp);
         SearchHits hits = rsp.getHits();
         assertEquals(2, rsp.getHits().getTotalHits());
-        assertEquals(5.0, hits.getAt(0).field("foo").getValue());
-        assertEquals(1.0, hits.getAt(1).field("foo").getValue());
+        assertEquals(5.0, (double)hits.getAt(0).field("foo").getValue());
+        assertEquals(1.0, (double)hits.getAt(1).field("foo").getValue());
     }
 
     public void testMissingField() throws Exception {
@@ -128,9 +128,9 @@ public class ExpressionScriptTests extends ElasticsearchIntegrationTest {
         SearchResponse rsp = buildRequest(script, "a", 2, "b", 3.5, "c", 5000000000L).get();
         SearchHits hits = rsp.getHits();
         assertEquals(3, hits.getTotalHits());
-        assertEquals(24.5, hits.getAt(0).field("foo").getValue());
-        assertEquals(9.5, hits.getAt(1).field("foo").getValue());
-        assertEquals(13.5, hits.getAt(2).field("foo").getValue());
+        assertEquals(24.5, (double)hits.getAt(0).field("foo").getValue());
+        assertEquals(9.5, (double)hits.getAt(1).field("foo").getValue());
+        assertEquals(13.5, (double)hits.getAt(2).field("foo").getValue());
     }
 
     public void testCompileFailure() {
