@@ -6,9 +6,23 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.elasticsearch</groupId>
     <artifactId>elasticsearch</artifactId>
-    <version>1.7.6-nedap-j11</version>
+    <version>1.7.6-nedap-j8</version>
     <packaging>jar</packaging>
     <description>Elasticsearch - Open Source, Distributed, RESTful Search Engine</description>
+
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>nedap.jfrog.io</id>
+            <url>https://nedap.jfrog.io/nedap/libs-releases-local</url>
+        </repository>
+        <snapshotRepository>
+            <uniqueVersion>true</uniqueVersion>
+            <id>nedap-snapshots.jfrog.io</id>
+            <url>https://nedap.jfrog.io/nedap/libs-snapshots-local</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <inceptionYear>2009</inceptionYear>
     <licenses>
         <license>
@@ -476,8 +490,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <fork>true</fork>
                     <maxmem>512m</maxmem>
                     <!-- REMOVE WHEN UPGRADE:
